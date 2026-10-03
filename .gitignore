@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+
+# Local env / secrets — never commit credentials
+.env
+.databrickscfg
+*.local.json
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/

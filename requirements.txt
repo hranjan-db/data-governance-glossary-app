@@ -1,0 +1,6 @@
+# dash and plotly are pre-installed in the Databricks Apps runtime; pinned here
+# to match the tested versions. dash-bootstrap-components is NOT pre-installed.
+dash==2.18.1
+dash-bootstrap-components>=1.6.0
+plotly<6
+databricks-sdk>=0.38.0

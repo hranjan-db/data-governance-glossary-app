@@ -1,0 +1,19 @@
+# Databricks Apps configuration.
+# Dash is launched with `python app.py`; the app binds to $DATABRICKS_APP_PORT.
+command: ["python", "app.py"]
+
+env:
+  # Environment label shown in the header. Override per workspace.
+  - name: GLOSSARY_ENVIRONMENT
+    value: "DEMO"
+  # Optional: pin the catalog here instead of editing config.json.
+  # - name: GLOSSARY_CATALOG
+  #   value: "main"
+
+# The app reads/writes Unity Catalog through a SQL warehouse using the app's
+# service principal. Bind a warehouse to this resource (CLI or the app's
+# Resources tab); the code auto-discovers a running warehouse if none is pinned.
+resources:
+  - name: sql-warehouse
+    sql_warehouse:
+      permission: CAN_USE

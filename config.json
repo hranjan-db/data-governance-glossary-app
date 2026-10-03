@@ -1,0 +1,45 @@
+{
+  "app_title": "Data Governance - Business Glossary",
+  "environment": "DEMO",
+
+  "allowed_catalogs": [],
+  "default_catalog": "",
+  "hidden_catalogs": ["system", "__databricks_internal", "samples"],
+
+  "workflow_catalog": "main",
+  "workflow_schema": "data_governance_app",
+  "proposals_table_name": "glossary_proposals",
+  "stewards_table_name": "data_stewards",
+
+  "ai_model_endpoint": "databricks-claude-sonnet-4-6",
+  "domain_context": "an enterprise data warehouse",
+
+  "sensitivity_values": [
+    "Public (Non-Sensitive)",
+    "Internal Use Only",
+    "Confidential",
+    "Secret",
+    "Not Defined"
+  ],
+
+  "uc_writeback": {
+    "enabled": true,
+    "write_comment": true,
+    "write_sensitivity_tag": true
+  },
+
+  "roles": {
+    "governance_leads": [],
+    "step2_approvers": [],
+    "demo_mode": true
+  },
+
+  "_notes": {
+    "allowed_catalogs": "Optional allowlist of catalogs users may browse. Empty = every catalog the app service principal can see (minus hidden_catalogs).",
+    "default_catalog": "Optional catalog pre-selected on load. Empty = user picks.",
+    "workflow_catalog / workflow_schema": "Where the app's own tables (glossary_proposals, data_stewards) live. This is independent of the catalogs being governed. The app SP needs CREATE/MODIFY here.",
+    "roles.demo_mode": "When true, every authenticated user gets all roles so one viewer can exercise the full workflow. Set false and populate governance_leads / step2_approvers for a real deployment.",
+    "uc_writeback.enabled": "When true, a fully approved proposal writes the definition as a column COMMENT and (optionally) a 'sensitivity' TAG back to the governed table. The app SP needs MODIFY + APPLY TAG on that table.",
+    "env_overrides": "GLOSSARY_ENVIRONMENT, GLOSSARY_DEFAULT_CATALOG, AI_MODEL_ENDPOINT, GLOSSARY_CONFIG_PATH override the matching values at runtime."
+  }
+}
